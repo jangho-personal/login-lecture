@@ -1,11 +1,11 @@
 "use strict"
 
 const home =(req,resp)=>{
-    resp.render("home/index");
+    resp.render("../views/home/index");
 };
 
 const login=(req,resp)=>{
-    resp.render("home/login");
+    resp.render("../views/home/login");
 };
 
 module.exports={
