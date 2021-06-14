@@ -7,29 +7,23 @@ const output={
     login:(req,resp)=>{
         resp.render("../views/home/login");
     },
+    register:(req,resp)=>{
+        resp.render("../views/home/register");
+    },
 };
 
 
 const process={
-    login:(req,resp)=>{
-        const id=req.body.id;
-        const password=req.body.password;
+    login:async (req,resp)=>{
         const users=new Users(req.body);
-        const response = users.login();
-        // let users={};
-        // users=UserStorage.getUsers('id','password');
-        // if(users.id.includes(id))
-        // {
-        //     const idx=users.id.indexOf(id);
-        //     if(password==users.password[idx])
-        //     {
-        //         response.success=true;
-        //         return resp.json(response);
-        //     }
-        // }
-        // response.success=false;
-        // response.message="로그인 실패";
+        const response = await users.login();
+        console.log(response);
         return resp.json(response);
+    },
+    register:async (req,resp)=>{
+        const users=new Users(req.body);
+        const response = await users.register();
+        return resp.json(response);  
     },
 }
 
